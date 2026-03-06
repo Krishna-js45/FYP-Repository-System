@@ -1,26 +1,150 @@
 @import "tailwindcss";
 
+/* ── MCE FYP Portal Design Tokens ───────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* MCE Brand colors */
+  --mce-blue: #0EA5E9;
+  --mce-blue-dark: #0284C7;
+  --mce-blue-mid: #38BDF8;
+  --mce-blue-light: #E0F2FE;
+  --mce-black: #000000;
+  --mce-white: #FFFFFF;
+
+  /* Keep navy as alias for backwards compat */
+  --navy: #0EA5E9;
+  --navy-dark: #0369A1;
+  --navy-mid: #0284C7;
+  --navy-light: #E0F2FE;
+
+  /* Accent (was gold — keep for step-tracker etc.) */
+  --gold: #0EA5E9;
+  --gold-dark: #0284C7;
+  --gold-light: #E0F2FE;
+
+  /* Surfaces */
+  --bg: #F0F9FF;
+  --surface: #FFFFFF;
+  --text: #0C1A27;
+  --text-muted: #64748B;
+  --border: #BAE6FD;
+
+  /* Status */
+  --success: #16A34A;
+  --danger: #DC2626;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Base ───────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* ── Animations ─────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(14, 165, 233, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(14, 165, 233, 0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.3s ease forwards;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.pulse-blue {
+  animation: pulse-ring 1.5s ease infinite;
+}
+
+/* ── Utilities ──────────────────────────────────────────────────────── */
+.nav-safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Badge color classes */
+.badge-draft {
+  background: #EFF2F7;
+  color: #475569;
+}
+
+.badge-submitted {
+  background: #DBEAFE;
+  color: #1D4ED8;
+}
+
+.badge-under_review {
+  background: #FEF9C3;
+  color: #A16207;
+}
+
+.badge-approved {
+  background: #DCFCE7;
+  color: #15803D;
+}
+
+.badge-rejected {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+/* Step tracker dots */
+.step-done {
+  background: var(--mce-blue);
+  border-color: var(--mce-blue);
+}
+
+.step-active {
+  background: #fff;
+  border-color: var(--mce-blue);
+}
+
+.step-todo {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.4);
 }

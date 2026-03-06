@@ -1,65 +1,121 @@
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className="min-h-screen flex flex-col" style={{ fontFamily: "Inter, sans-serif" }}>
+
+      {/* ── Top Nav ─────────────────────────────────────── */}
+      <header style={{ background: "var(--mce-blue)" }} className="px-5 py-3 flex items-center justify-between shadow-md">
+        <div className="flex items-center gap-3">
+          {/* College logo */}
+          <div className="w-16 h-16 rounded-xl overflow-hidden bg-white flex items-center justify-center flex-shrink-0 shadow-lg p-1">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/mahendra-logo.png"
+              alt="Mahendra College of Engineering"
+              width={60}
+              height={60}
+              className="object-contain w-full h-full"
+              unoptimized
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+          <div>
+            <p className="font-extrabold text-white text-sm leading-tight">Mahendra College of Engineering</p>
+            <p className="text-white/70 text-xs leading-none">MCE Final Year Project Management Portal</p>
+          </div>
         </div>
-      </main>
+        <Link href="/login"
+          className="text-sm font-semibold px-4 py-2 rounded-lg border-2 border-white/40 text-white hover:bg-white/15 transition">
+          Sign In
+        </Link>
+      </header>
+
+      {/* ── Hero ─────────────────────────────────────────── */}
+      <section
+        style={{ background: "linear-gradient(160deg, var(--mce-blue) 0%, var(--mce-blue-dark) 60%, #075985 100%)" }}
+        className="flex-1 flex flex-col items-center justify-center text-center px-6 py-16 relative overflow-hidden">
+
+        {/* Decorative rings */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-0 w-72 h-72 rounded-full opacity-10 -translate-y-1/2 translate-x-1/3"
+            style={{ background: "#fff" }} />
+          <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full opacity-10 translate-y-1/3 -translate-x-1/4"
+            style={{ background: "#fff" }} />
+        </div>
+
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 text-xs font-semibold"
+          style={{ background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)" }}>
+          🎓 Mahendra College of Engineering — Official Portal
+        </div>
+
+        {/* College logo big */}
+        <div className="w-24 h-24 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-2xl overflow-hidden p-2">
+          <Image
+            src="/mahendra-logo.png"
+            alt="MCE Logo"
+            width={88}
+            height={88}
+            className="object-contain w-full h-full"
+            unoptimized
+          />
+        </div>
+
+        <h1 className="text-3xl font-extrabold text-white mb-3 leading-tight">
+          MCE Final Year<br />
+          <span style={{ color: "#BAE6FD" }}>Project Portal</span>
+        </h1>
+        <p className="text-white/70 text-sm max-w-xs leading-relaxed mb-2">
+          Mahendra College of Engineering
+        </p>
+        <p className="text-white/60 text-xs max-w-xs leading-relaxed mb-10">
+          Submit, track, and manage Final Year Projects in one secure portal — built for students and faculty.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col gap-3 w-full max-w-xs">
+          <Link href="/login?role=student"
+            className="w-full py-4 rounded-2xl font-bold text-base text-center shadow-lg transition active:scale-95"
+            style={{ background: "#fff", color: "var(--mce-blue)" }}>
+            🎓 Login as Student
+          </Link>
+          <Link href="/login?role=staff"
+            className="w-full py-4 rounded-2xl font-bold text-base text-center border-2 transition active:scale-95"
+            style={{ borderColor: "rgba(255,255,255,0.5)", color: "#fff", background: "rgba(255,255,255,0.1)" }}>
+            👩‍🏫 Login as Staff
+          </Link>
+        </div>
+      </section>
+
+      {/* ── Features ──────────────────────────────────────── */}
+      <section style={{ background: "var(--bg)" }} className="px-5 py-10">
+        <p className="text-center text-xs font-semibold uppercase tracking-widest mb-6"
+          style={{ color: "var(--text-muted)" }}>Everything you need</p>
+        <div className="grid grid-cols-1 gap-4 max-w-sm mx-auto">
+          {[
+            { icon: "📤", title: "Easy Submission", desc: "Submit project details, guide info, and team in a guided multi-step form." },
+            { icon: "📊", title: "Live Status Tracking", desc: "Track your project from Draft to Approved in real‑time." },
+            { icon: "📁", title: "Document Storage", desc: "Upload your Proposal, Report, and PPT securely via Cloudinary." },
+            { icon: "✅", title: "Faculty Review", desc: "Staff can search, review, and approve or reject submissions with feedback." },
+          ].map((f) => (
+            <div key={f.title} className="flex items-start gap-4 p-4 rounded-2xl shadow-sm border"
+              style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
+              <div className="text-2xl flex-shrink-0 mt-0.5">{f.icon}</div>
+              <div>
+                <p className="font-bold text-sm mb-1" style={{ color: "var(--text)" }}>{f.title}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>{f.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Footer ──────────────────────────────────────────── */}
+      <footer style={{ background: "var(--mce-blue-dark)" }} className="py-5 text-center">
+        <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
+          © 2026 Mahendra College of Engineering · MCE Final Year Project Management Portal
+        </p>
+      </footer>
     </div>
   );
 }
